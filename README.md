@@ -3,7 +3,7 @@ This contains three files that give different approaches to building a command-l
 
 #### `carriage-return.py`
 This utilizes the "carriage return" approach, which amounts to rewriting a single, formatted string and prepending the string with the `\r` character. 
-This is great if you only need to update a single progress bar
+This is great if you only need to update a single progress bar.
 
 #### `ansi.py`
 This utilizes ANSI escape codes, specifically those around cursor position. 
