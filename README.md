@@ -15,6 +15,15 @@ This enables multiple progress bars, for use in multithreaded applications.
 
 
 ### When running on Windows CMD or Powershell
-[This StackOverflow question](https://stackoverflow.com/questions/16755142/how-to-make-win32-console-recognize-ansi-vt100-escape-sequences) sheds some light on why native Windows CMD & Powershell prompts don't work with ANSI escape sequences.
-To get around this, I use the [Windows Terminal (Preview)](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n0dx20hk701?activetab=pivot:overviewtab), which provides more modern features for all Windows-native command prompts.
-The ANSI solutions will also work on Windows Subsystem for Linux terminals.
+If you're using Windows 10 (post 2017) and the ANSI solutions don't work, you need to re-enable ANSI support for your command prompts. 
+To do that, open up your Registry Editor and make the following changes:
+- navigate to HKEY_CURRENT_USER \ Console
+- add a new DWORD 32 bit value
+- name the value `VirtualTerminalLevel`
+- modify the value to 1 (hex)
+- close and reopen all CMD or Powershell prompts
+- profit!!!
+- [this github issue](https://github.com/ytdl-org/youtube-dl/issues/15758) has some images to follow as well
+
+The ANSI solutions will also work out-of-the-box on Windows Subsystem for Linux terminals, 
+and the new [Windows Terminal (currently in preview)](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n0dx20hk701?activetab=pivot:overviewtab)
