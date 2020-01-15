@@ -22,7 +22,6 @@ def outstr(index, total, scale=1.0):
 	return "\u001b[{}D[{}>{}] {}%".format(COLUMNS, "=" * current, " " * round(width - current), percentage)
 
 
-
 for i in reversed(range(5)):
 	for j in range(RANGE):
 		sys.stdout.write(outstr(j, RANGE, float(i + 1)/10))
