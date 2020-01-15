@@ -2,7 +2,7 @@
 This contains three files that give different approaches to building a command-line progress bar in python.
 
 #### `carriage-return.py`
-This utilizes the "carriage return" approach, which amounts to rewriting a single, formatted string, and prepending the string with the `\r` character. 
+This utilizes the "carriage return" approach, which amounts to rewriting a single, formatted string and prepending the string with the `\r` character. 
 This is great if you only need to update a single progress bar
 
 #### `ansi.py`
