@@ -3,6 +3,7 @@ import sys
 import time
 import random
 import shutil
+import timeit
 
 
 RANGE = 100
@@ -29,7 +30,6 @@ def start(count):
 	sys.stdout.write('\n' * count)
 
 	while any(x < RANGE for x in all_progress_bars):
-		time.sleep(0.01)
 		loading = [(i, v) for (i, v) in enumerate(all_progress_bars) if v < 100]
 		index, _ = random.choice(loading)
 		all_progress_bars[index] += 1
@@ -41,4 +41,9 @@ def start(count):
 			print(outstr(bar, RANGE, .5))
 
 
-start(5)
+begin = timeit.default_timer()
+start(50)
+end = timeit.default_timer() - begin 
+
+print("Time: {}".format(end))
+
