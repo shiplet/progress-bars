@@ -38,12 +38,12 @@ def start(count):
 		sys.stdout.write('\u001b[{}A'.format(count))
 
 		for bar in all_progress_bars:
-			print(outstr(bar, RANGE, .5))
+			print(outstr(bar, RANGE, 1.0))
 
 
 begin = timeit.default_timer()
-start(50)
+start(30)
 end = timeit.default_timer() - begin 
 
-print("Time: {}".format(end))
+print("Time: {}s".format(end))
 

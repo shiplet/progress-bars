@@ -8,3 +8,5 @@ edition = "2018"
 
 [dependencies]
 rand = "0.7.3"
+chrono = "0.2.16"
+terminal_size = "0.1.10"

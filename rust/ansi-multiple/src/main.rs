@@ -1,4 +1,6 @@
 use rand::{thread_rng, Rng};
+use std::time::{SystemTime};
+use terminal_size::{Width, Height, terminal_size};
 
 const COUNT: usize = 30;
 const RANGE: i64 = 100;
@@ -35,18 +37,33 @@ fn get_incomplete_indexes(progress_bars: &[i32; COUNT]) -> Vec<i32> {
 }
 
 fn main() {
+    let start = SystemTime::now();
     let mut all_progress_bars: [i32; COUNT] = [0; COUNT];
     let mut rng = thread_rng();
+    let size = terminal_size();
+    let mut term_width: u16 = 0;
+    if let Some((Width(w), Height(_h))) = size {
+        term_width = w;
+    }
+
     print!("{}", "\n".repeat(COUNT));
     while !check_complete(&all_progress_bars) {
         let incomplete = get_incomplete_indexes(&all_progress_bars);
         let rnd_index = rng.gen_range(0, incomplete.len());
         all_progress_bars[incomplete[rnd_index] as usize] += 1;
-        print!("\u{001b}[1000D");
+        print!("\u{001b}[{}D", term_width);
         print!("\u{001b}[{}A", COUNT);
 
         for bar in all_progress_bars.iter() {
             print!("{}\n", outstr(bar, RANGE, 1.0));
+        }
+    }
+    match start.elapsed() {
+        Ok(elapsed) => {
+            println!("Time: {}s", elapsed.as_secs_f32());
+        }
+        Err(e) => {
+            println!("Error: {:?}", e);
         }
     }
 }
