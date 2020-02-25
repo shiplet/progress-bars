@@ -22,7 +22,7 @@ def outstr(index, total, scale=1.0):
 	width = round(100 * scale)
 	current = round((index/total * 100.0) * scale)
 	percentage = round(index/total * 100.0)
-	return "[{}>{}] {}%".format("=" * current, " " * round(width - current), percentage)
+	return "[{}>{}] {}%\n".format("=" * current, " " * round(width - current), percentage)
 
 
 def start(count):
@@ -38,7 +38,9 @@ def start(count):
 		sys.stdout.write('\u001b[{}A'.format(count))
 
 		for bar in all_progress_bars:
-			print(outstr(bar, RANGE, 1.0))
+			sys.stdout.write(outstr(bar, RANGE, 1.0))
+
+		sys.stdout.flush()
 
 
 begin = timeit.default_timer()

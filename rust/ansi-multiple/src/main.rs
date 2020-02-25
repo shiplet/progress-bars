@@ -67,9 +67,11 @@ fn main() {
     match start.elapsed() {
         Ok(elapsed) => {
             write!(w, "Time: {}s\n", elapsed.as_secs_f32()).unwrap();
+            w.flush().unwrap();
         }
         Err(e) => {
             write!(w, "Error: {:?}\n", e).unwrap();
+            w.flush().unwrap();
         }
     }
 }
