@@ -1,5 +1,5 @@
 # progress bars [![](https://img.shields.io/badge/python-3.4+-blue.svg)](https://www.python.org/download/releases/3.4.0/)
-This contains three files that give different approaches to building a command-line progress bar in python.
+This contains three files that give different approaches to building a command-line progress bar in python. It also contains analogous implementations in Rust and Go.
 
 ---
 
